@@ -31,7 +31,21 @@ Before proceeding with the installation steps below, you need to install [Python
    ```bash
    pip install django
    ```
-6. **Make migrations and then migrate**  
+5. **Install necessary module**
+   Run the following commands to install modules that are used in the project
+   ```bash
+   pip install djangorestframework
+   ```
+   ```bash
+   pip install django-crispy-forms
+   ```
+   ```bash
+   pip install django-bootstrap4
+   ```
+   ```bash
+   pip install crispy-bootstrap4
+   ```
+7. **Make migrations and then migrate**  
    Run the 2 following commands:  
    ```bash
    python manage.py makemigrations
@@ -39,13 +53,13 @@ Before proceeding with the installation steps below, you need to install [Python
    ```bash
    python manage.py migrate
    ```
-7. **Create a superuser**
+8. **Create a superuser**
    In order to run this app, we need to create a superuser. Run the following command:
    ```bash
    python manage.py createsuperuser
    ```
    Feel free to choose your user name, email and password. (Email is optional)
-8. **Run server**
+9. **Run server**
    ```bash
    python manage.py runserver
    ```
