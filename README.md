@@ -32,6 +32,7 @@ Before proceeding with the installation steps below, you need to install [Python
    pip install django
    ```
 5. **Install necessary module**
+   
    Run the following commands to install modules that are used in the project
    ```bash
    pip install djangorestframework
