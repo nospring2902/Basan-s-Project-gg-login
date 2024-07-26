@@ -49,4 +49,4 @@ Before proceeding with the installation steps below, you need to install [Python
    ```bash
    python manage.py runserver
    ```
-   When the server is hosted, you can run this webapp at this URL: http://127.0.0.1:8000/graph/
+   When the server is hosted, you can run this webapp at this URL: http://127.0.0.1:8000
