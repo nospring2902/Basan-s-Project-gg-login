@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import main,temp, homepage, CreateForm, UpdateForm, DeleteForm, register, basan, log_in, log_out, dashboard, viewtasks
+from .views import main,temp, homepage, CreateForm, UpdateForm, DeleteForm, register, basan, log_in, log_out, dashboard, viewtasks, auth_receiver
 
 urlpatterns = [
     path('home', main),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('login', log_in, name='log_in'),
     path('logout', log_out, name='log_out'),
     path('dashboard', dashboard, name='dashboard'), 
+    path('auth-receiver',auth_receiver, name='auth_receiver'),
 ]
