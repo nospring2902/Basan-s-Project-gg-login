@@ -1,7 +1,12 @@
+import os
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Task
 from .form import TaskForm, UserForm, LoginForm
+from google.oauth2 import id_token
+from google.auth.transport import requests
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +16,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 
@@ -91,7 +97,7 @@ def register(request):
         
     context={'formm': form}
     return render(request, 'register.html', context=context)
-
+@csrf_exempt
 def log_in(request):
     
     form=LoginForm()
@@ -111,6 +117,25 @@ def log_in(request):
             
     context={'form': form}
     return render(request, 'login.html', context=context)
+
+@csrf_exempt
+def auth_receiver(request):
+    """
+    Google calls this URL after the user has signed in with their Google account.
+    """
+    token = request.POST['credential']
+
+    try:
+        user_data = id_token.verify_oauth2_token(
+            token, requests.Request(), os.environ['GOOGLE_OAUTH_CLIENT_ID']
+        )
+    except ValueError:
+        return HttpResponse(status=403)
+
+    request.session['user_data'] = user_data 
+
+    return redirect('dashboard')
+
 
 @login_required(login_url='log_in')
 def dashboard(request):
