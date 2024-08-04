@@ -14,5 +14,5 @@ urlpatterns = [
     path('login', log_in, name='log_in'),
     path('logout', log_out, name='log_out'),
     path('dashboard', dashboard, name='dashboard'), 
-    path('auth-receiver',auth_receiver, name='auth_receiver'),
+    # path('auth-receiver',auth_receiver, name='auth_receiver'),
 ]
