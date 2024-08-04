@@ -117,7 +117,7 @@ def log_in(request):
             
     context={'form': form}
     return render(request, 'login.html', context=context)
-
+'''
 @csrf_exempt
 def auth_receiver(request):
     """
@@ -135,6 +135,7 @@ def auth_receiver(request):
     request.session['user_data'] = user_data 
 
     return redirect('dashboard')
+'''
 
 
 @login_required(login_url='log_in')
