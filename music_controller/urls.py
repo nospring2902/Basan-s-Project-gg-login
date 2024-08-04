@@ -17,8 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.views.generic import TemplateView # for gg login
+#from django.contrib.auth import views as auth_views #for github login
+#from api import views # for github login
+
+
+
 urlpatterns = [
+
+    # path('', TemplateView.as_view(template_name="login.html")) ,
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('', include('api.urls')),
+    path('accounts/', include('allauth.urls')),
+    #path('social-auth/', include('social_django.urls', namespace= 'social')),
+
 ]
